@@ -6,7 +6,7 @@ import Agents from './pages/Agents'
 
 const App = () => {
   return (
-    <div className='text-white bg-black min-h-screen w-full'>
+    <div className='text-white'>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/projects' element={<Projects />} />
