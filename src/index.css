@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: l300 ;
+    src: url(../public/fonts/Lausanne-300.ttf);
+}
+@font-face {
+    font-family: l500 ;
+    src: url(../public/fonts/Lausanne-500.ttf);
+}
