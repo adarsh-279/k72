@@ -8,8 +8,9 @@ import Loader from './components/loader/Loader.jsx'
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <Loader />
-      <App />
+      <Loader>
+        <App />
+      </Loader>
     </BrowserRouter>
   </StrictMode>
 );
