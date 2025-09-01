@@ -1,35 +1,49 @@
 @import "tailwindcss";
 
 @font-face {
-    font-family: l300 ;
-    src: url(../public/fonts/Lausanne-300.ttf);
+  font-family: l300;
+  src: url(../public/fonts/Lausanne-300.ttf);
 }
 @font-face {
-    font-family: l500 ;
-    src: url(../public/fonts/Lausanne-500.ttf);
+  font-family: l500;
+  src: url(../public/fonts/Lausanne-500.ttf);
 }
 
-.moveX{
-    animation-name: moveAnimation;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+.moveX {
+  animation-name: moveAnimation;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
-.moveLink{
-    opacity: 0;
-    transition: all ease 0.1s;
+.moveLink {
+  opacity: 0;
+  transition: all ease 0.1s;
 }
 
-.link:hover .moveLink{
-    opacity: 1;
+.link:hover .moveLink {
+  opacity: 1;
 }
 
 @keyframes moveAnimation {
-    from{
-        transform: translateX(0);
-    }
-    to{
-        transform: translateX(-35%);
-    }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-35%);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #7f7f7f;
+  height: 8px;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
 }

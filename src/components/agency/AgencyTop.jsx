@@ -4,55 +4,84 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 
 const AgencyTop = () => {
+  gsap.registerPlugin(ScrollTrigger);
 
-      gsap.registerPlugin(ScrollTrigger);
+  const imageDivRef = useRef(null);
+  const imageRef = useRef(null);
+  const topOne = useRef(null);
+  const topTwo = useRef(null);
 
-      const imageDivRef = useRef(null);
-      const imageRef = useRef(null);
+  const images = [
+    "https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Olivier_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Lawrence_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/HugoJoseph_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/ChantalG_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MyleneS_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/SophieA_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Claire_480x640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/Michele_480X640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MEL_480X640-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/CAMILLE_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MAXIME_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg",
+    "https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg",
+  ];
 
-      const images = [
-        "https://k72.ca/uploads/teamMembers/Carl_480x640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/Olivier_480x640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/Lawrence_480x640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/HugoJoseph_480x640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/ChantalG_480x640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/MyleneS_480x640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/SophieA_480x640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/Claire_480x640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/Michele_480X640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/MEL_480X640-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/CAMILLE_480X640_2-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/MAXIME_480X640_2-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/MEGGIE_480X640_2-480x640.jpg",
-        "https://k72.ca/uploads/teamMembers/joel_480X640_3-480x640.jpg",
-      ];
+  useGSAP(function () {
+    gsap.to(imageDivRef.current, {
+      scrollTrigger: {
+        trigger: imageDivRef.current,
+        start: "top -4%",
+        end: "top -190%",
+        scrub: true,
+        pin: true,
+        pinSpacing: true,
+        pinReparent: true,
+        pinType: "transform",
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: function (e) {
+          let imageIndex;
+          if (e.progress < 1) {
+            imageIndex = Math.floor(e.progress * images.length);
+          } else {
+            imageIndex = images.length - 1;
+          }
+          imageRef.current.src = images[imageIndex];
+        },
+      },
+    });
 
-      useGSAP(function () {
-        gsap.to(imageDivRef.current, {
-          scrollTrigger: {
-            trigger: imageDivRef.current,
-            start: "top -4%",
-            end: "top -190%",
-            scrub: true,
-            pin: true,
-            pinSpacing: true,
-            pinReparent: true,
-            pinType: "transform",
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onUpdate: function (e) {
-              let imageIndex;
-              if (e.progress < 1) {
-                imageIndex = Math.floor(e.progress * images.length);
-              } else {
-                imageIndex = images.length - 1;
-              }
-              imageRef.current.src = images[imageIndex];
-            },
-          },
-        });
-      });
-    
+    gsap.from(topOne.current, {
+      opacity: 0,
+      y:-20,
+      stagger: {
+        amount: 0.9,
+      },
+      scrollTrigger: {
+        trigger: topOne.current.querySelector('h1'),
+        start: "top 90%",
+        end: "top 70%",
+        scrub: true,
+      },
+    });
+
+    gsap.from(topTwo.current, {
+      opacity: 0,
+      y:-20,
+      stagger: {
+        amount: 0.9,
+      },
+      scrollTrigger: {
+        trigger: topTwo.current,
+        start: "top 100%",
+        end: "top 80%",
+        scrub: true,
+      },
+    });
+  });
+
   return (
     <div className="py-1">
       <div
@@ -84,18 +113,18 @@ const AgencyTop = () => {
         </div>
       </div>
       <div className="h-screen pt-70 text-black flex flex-col pl-40 font-[l500]">
-        <div className="flex text-xl gap-90">
+        <div ref={topOne} className="flex text-xl gap-90">
           <div>
             <h1>Expertise</h1>
           </div>
           <div>
             <h1>
-              Stratergy <br /> Advertising <br /> Branding <br /> Design <br />{" "}
+              Stratergy <br /> Advertising <br /> Branding <br /> Design <br />
               Content
             </h1>
           </div>
         </div>
-        <div className="flex text-xl gap-10 pt-30 pb-80">
+        <div ref={topTwo} className="flex text-xl gap-10 pt-30 pb-80">
           <p className="w-[30%]">
             Our Work_ Born in curiosity, raised by <br /> dedication and fed
             with a steady diet of <br /> creativity.
@@ -106,13 +135,13 @@ const AgencyTop = () => {
             of <br /> ourselves.
           </p>
           <p className="w-[25%]">
-            Our Culture_ We’re open to <br /> each other. Period. The team{" "}
+            Our Culture_ We’re open to <br /> each other. Period. The team
             <br /> works together to create a <br /> space that makes us proud.
           </p>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default AgencyTop
+export default AgencyTop;
