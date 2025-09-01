@@ -1,12 +1,12 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useLocation } from "react-router-dom";
 import { FaHeart } from "react-icons/fa";
+import { NavbarContext } from "../../context/NavContext";
 
 const NavPage = () => {
-
   const LoadingRef = useRef(null);
+  const [navOpen, setnavOpen] = useContext(NavbarContext);
 
   useGSAP(
     function () {
@@ -21,23 +21,32 @@ const NavPage = () => {
       });
 
       tl.from(LoadingRef.current, {
-  opacity:0
-      })
-      
-      tl.from('.link', {
+        opacity: 0,
+      });
+
+      tl.from(".link", {
         opacity: 0,
         rotateX: 90,
         stagger: {
-          amount: 0.3
-        }
-      })
+          amount: 0.3,
+        },
+      });
+
+      if (navOpen) {
+        LoadingRef.current.style.display = "block";
+        tl.play();
+      } else {
+        LoadingRef.current.style.display = "none";
+        tl.reverse();
+      }
     },
+    [navOpen]
   );
 
   return (
     <div
       ref={LoadingRef}
-      className="hidden h-screen w-screen absolute bg-black overflow-hidden"
+      className="h-screen w-screen absolute bg-black overflow-hidden z-20"
     >
       <div className="h-screen w-full absolute">
         <div className="h-full w-full flex">
@@ -48,7 +57,7 @@ const NavPage = () => {
           <div className="stairs h-full w-1/5 bg-black"></div>
         </div>
       </div>
-      <div className="w-full relative flex flex-col justify-between">
+      <div className=" w-full relative flex flex-col justify-between">
         <div className="w-full h-15 p-2 flex fixed top-0 items-center justify-between z-5 ">
           <div className="">
             <svg
@@ -64,7 +73,12 @@ const NavPage = () => {
               ></path>
             </svg>
           </div>
-          <div className="h-40 w-30 relative">
+          <div
+            onClick={() => {
+              setnavOpen(false);
+            }}
+            className="h-40 w-30 relative"
+          >
             <div className="h-35 w-0.5 bg-white absoulte mt-16 -ml-2 -rotate-45 origin-top z-10"></div>
             <div className="h-35 w-0.5 bg-white absolute rotate-45 origin-top -mt-35 ml-23 z-10"></div>
           </div>

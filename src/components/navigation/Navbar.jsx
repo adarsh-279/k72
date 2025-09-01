@@ -1,10 +1,12 @@
-import React from 'react'
-import { HiOutlineMenuAlt3 } from "react-icons/hi";
+import React, { useContext } from 'react';
+import { HiOutlineMenuAlt3 } from 'react-icons/hi';
+import { NavbarContext } from '../../context/NavContext';
 
 const Navbar = () => {
+  const [navOpen, setnavOpen] = useContext(NavbarContext);
 
   return (
-    <div className="w-full h-15 flex fixed top-0 items-center justify-between z-5">
+    <div className="w-full h-15 flex fixed top-0 items-center justify-between z-50">
       <div className="pl-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -18,11 +20,14 @@ const Navbar = () => {
           ></path>
         </svg>
       </div>
-      <div  className="bg-black h-12 w-60 hover:bg-[#d3fd50] hover:text-black flex items-center justify-end pr-10 -mt-3">
-        <HiOutlineMenuAlt3 className="text-5xl " />
+      <div
+        onClick={() => setnavOpen(true)} // Set navOpen to true to open the menu
+        className="bg-black h-12 w-60 hover:bg-[#d3fd50] hover:text-black flex items-center justify-end pr-10 -mt-3"
+      >
+        <HiOutlineMenuAlt3 className="text-5xl" />
       </div>
     </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
