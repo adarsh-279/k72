@@ -38,11 +38,10 @@ const Work = () => {
     gsap.from(".work", {
       height: "200px",
       stagger: {
-        amount: 0.95,
+        amount: 0.99,
       },
       scrollTrigger: {
         trigger: ".workParent",
-        markers: true,
         start: "top 70%",
         end: "top -350%",
         scrub: true,
@@ -62,7 +61,10 @@ const Work = () => {
                 key={index}
                 className="work w-full h-120 flex flex-row gap-2"
               >
-                <WorkPage img1={item.img1} img2={item.img2} />
+                <WorkPage
+                  img1={item.img1}
+                  img2={item.img2}
+                />
               </div>
             );
           })}

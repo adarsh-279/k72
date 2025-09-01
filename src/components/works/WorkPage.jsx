@@ -9,7 +9,7 @@ const WorkPage = (props) => {
           src={props.img1}
           alt="Image"
         />
-        <div className="opacity-0 hover:opacity-100 transition-all duration-200 absolute h-full w-full top-0 left-0 text-white flex items-center justify-center bg-black/20">
+        <div className="opacity-0 hover:opacity-100 transition-all duration-200 absolute h-full w-full top-0 left-0 text-white flex items-center justify-center bg-black/30">
           <h2 className="text-6xl px-5 py-2 border-1 rounded-full font-[l500] leading-9 pt-4">
             VIEW PROJECT
           </h2>
@@ -22,7 +22,7 @@ const WorkPage = (props) => {
           src={props.img2}
           alt="Image"
         />
-        <div className="opacity-0 hover:opacity-100 transition-all duration-200 absolute h-full w-full top-0 left-0 text-white flex items-center justify-center bg-black/20">
+        <div className="opacity-0 hover:opacity-100 transition-all duration-200 absolute h-full w-full top-0 left-0 text-white flex items-center justify-center bg-black/30">
           <h2 className="text-6xl px-5 py-2 border-1 rounded-full font-[l500] leading-9 pt-4">
             VIEW PROJECT
           </h2>
